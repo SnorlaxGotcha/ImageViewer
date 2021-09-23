@@ -83,6 +83,11 @@ class ThumbnailsViewController: UICollectionViewController, UICollectionViewDele
             closeButton.autoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
             closeButton.frame.origin.x = marginLeft
             closeButton.frame.origin.y = marginTop
+        case .pinRightCenter(let marginRight):
+            print("addCloseButton, Do nothing")
+        case .pinLeftCenter(let marginLeft):
+            print("addCloseButton, Do nothing")
+
         }
 
         closeButton.addTarget(self, action: #selector(close), for: .touchUpInside)
