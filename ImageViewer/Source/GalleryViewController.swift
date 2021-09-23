@@ -18,6 +18,10 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     /// A custom view at the bottom of the gallery with layout using default (or custom) pinning settings for footer.
     open var footerView: UIView?
     fileprivate var closeButton: UIButton? = UIButton.closeButton()
+    
+    fileprivate var nextButton: UIButton? = UIButton.nextButton()
+    fileprivate var previoursButton: UIButton? = UIButton.previoursButton()
+
     fileprivate var seeAllCloseButton: UIButton? = nil
     fileprivate var thumbnailsButton: UIButton? = UIButton.thumbnailsButton()
     fileprivate var deleteButton: UIButton? = UIButton.deleteButton()
@@ -44,6 +48,10 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     fileprivate var headerLayout = HeaderLayout.center(25)
     fileprivate var footerLayout = FooterLayout.center(25)
     fileprivate var closeLayout = ButtonLayout.pinRight(8, 16)
+    
+    fileprivate var nextLayout = ButtonLayout.pinRightCenter(8)
+    fileprivate var previoursLayout = ButtonLayout.pinLeftCenter(8)
+
     fileprivate var seeAllCloseLayout = ButtonLayout.pinRight(8, 16)
     fileprivate var thumbnailsLayout = ButtonLayout.pinLeft(8, 16)
     fileprivate var deleteLayout = ButtonLayout.pinRight(8, 66)
@@ -221,6 +229,23 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             self.view.addSubview(closeButton)
         }
     }
+    
+    fileprivate func configureNextButton() {
+
+        if let nextButton = nextButton {
+            nextButton.addTarget(self, action: #selector(GalleryViewController.closeInteractively), for: .touchUpInside)
+            self.view.addSubview(nextButton)
+        }
+    }
+    
+    fileprivate func configurePrevioursButton() {
+
+        if let previoursButton = previoursButton {
+            previoursButton.addTarget(self, action: #selector(GalleryViewController.closeInteractively), for: .touchUpInside)
+            self.view.addSubview(previoursButton)
+        }
+    }
+    
 
     fileprivate func configureThumbnailsButton() {
 
@@ -319,6 +344,8 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         overlayView.frame = view.bounds.insetBy(dx: -UIScreen.main.bounds.width * 2, dy: -UIScreen.main.bounds.height * 2)
 
         layoutButton(closeButton, layout: closeLayout)
+        layoutButton(nextButton, layout: nextLayout)
+        layoutButton(previoursButton, layout: previoursLayout)
         layoutButton(thumbnailsButton, layout: thumbnailsLayout)
         layoutButton(deleteButton, layout: deleteLayout)
         layoutHeaderView()
@@ -351,6 +378,17 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             button.autoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
             button.frame.origin.x = marginLeft
             button.frame.origin.y = defaultInsets.top + marginTop
+        
+        case .pinRightCenter(let marginRight):
+            button.autoresizingMask = [.flexibleRightMargin]
+            button.frame.origin.x = self.view.bounds.size.width - marginRight - button.bounds.size.width
+            button.frame.origin.y = (defaultInsets.top + defaultInsets.bottom)/2
+
+        case .pinLeftCenter(let marginLeft):
+            button.autoresizingMask = [.flexibleRightMargin]
+            button.frame.origin.x = marginLeft
+            button.frame.origin.y = (defaultInsets.top + defaultInsets.bottom)/2
+            
         }
     }
 

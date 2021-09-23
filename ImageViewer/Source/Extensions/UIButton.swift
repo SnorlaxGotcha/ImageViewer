@@ -97,6 +97,22 @@ extension UIButton {
 
         return button
     }
+    
+    static func nextButton() -> UIButton {
+
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50)))
+        button.setImage(.init(named: "next"), for: .normal)
+
+        return button
+    }
+    
+    static func previoursButton() -> UIButton {
+
+        let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50)))
+        button.setImage(.init(named: "back"), for: .normal)
+        
+        return button
+    }
 
     static func thumbnailsButton() -> UIButton {
 
