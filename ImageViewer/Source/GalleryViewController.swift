@@ -49,8 +49,8 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     fileprivate var footerLayout = FooterLayout.center(25)
     fileprivate var closeLayout = ButtonLayout.pinRight(8, 16)
     
-    fileprivate var nextLayout = ButtonLayout.pinRightCenter(8)
-    fileprivate var previoursLayout = ButtonLayout.pinLeftCenter(8)
+    fileprivate var nextLayout = ButtonLayout.pinRightCenter(2)
+    fileprivate var previoursLayout = ButtonLayout.pinLeftCenter(2)
 
     fileprivate var seeAllCloseLayout = ButtonLayout.pinRight(8, 16)
     fileprivate var thumbnailsLayout = ButtonLayout.pinLeft(8, 16)
@@ -236,7 +236,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     fileprivate func configureNextButton() {
 
         if let nextButton = nextButton {
-            nextButton.addTarget(self, action: #selector(GalleryViewController.closeInteractively), for: .touchUpInside)
+            nextButton.addTarget(self, action: #selector(GalleryViewController.nextImg), for: .touchUpInside)
             self.view.addSubview(nextButton)
         }
     }
@@ -244,7 +244,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     fileprivate func configurePrevioursButton() {
 
         if let previoursButton = previoursButton {
-            previoursButton.addTarget(self, action: #selector(GalleryViewController.closeInteractively), for: .touchUpInside)
+            previoursButton.addTarget(self, action: #selector(GalleryViewController.previoursImg), for: .touchUpInside)
             self.view.addSubview(previoursButton)
         }
     }
@@ -590,6 +590,16 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     @objc fileprivate func closeInteractively() {
 
         closeDecorationViews(closedCompletion)
+    }
+    
+    @objc fileprivate func nextImg() {
+
+        page(toIndex: currentIndex+1)
+    }
+    
+    @objc fileprivate func previoursImg() {
+
+        page(toIndex: currentIndex-1)
     }
 
     fileprivate func closeDecorationViews(_ completion: (() -> Void)?) {
