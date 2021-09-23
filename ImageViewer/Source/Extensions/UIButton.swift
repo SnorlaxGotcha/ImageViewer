@@ -101,7 +101,8 @@ extension UIButton {
     static func nextButton() -> UIButton {
 
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50)))
-        button.setImage(.init(named: "next"), for: .normal)
+        button.setImage(.init(named: "imageviewernext"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
 
         return button
     }
@@ -109,8 +110,9 @@ extension UIButton {
     static func previoursButton() -> UIButton {
 
         let button = UIButton(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 50, height: 50)))
-        button.setImage(.init(named: "back"), for: .normal)
-        
+        button.setImage(.init(named: "imageviewerback"), for: .normal)
+        button.imageView?.contentMode = .scaleAspectFit
+
         return button
     }
 

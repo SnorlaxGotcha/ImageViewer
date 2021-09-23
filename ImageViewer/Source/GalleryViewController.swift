@@ -228,6 +228,9 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             closeButton.alpha = 0
             self.view.addSubview(closeButton)
         }
+        
+        configureNextButton()
+        configurePrevioursButton()
     }
     
     fileprivate func configureNextButton() {
@@ -261,7 +264,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         if let deleteButton = deleteButton {
             deleteButton.addTarget(self, action: #selector(GalleryViewController.deleteItem), for: .touchUpInside)
             deleteButton.alpha = 0
-            self.view.addSubview(deleteButton)
+//            self.view.addSubview(deleteButton)
         }
     }
 
@@ -380,14 +383,14 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             button.frame.origin.y = defaultInsets.top + marginTop
         
         case .pinRightCenter(let marginRight):
-            button.autoresizingMask = [.flexibleRightMargin]
+            button.autoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
             button.frame.origin.x = self.view.bounds.size.width - marginRight - button.bounds.size.width
-            button.frame.origin.y = (defaultInsets.top + defaultInsets.bottom)/2
+            button.frame.origin.y = UIScreen.main.bounds.height/2
 
         case .pinLeftCenter(let marginLeft):
-            button.autoresizingMask = [.flexibleRightMargin]
+            button.autoresizingMask = [.flexibleBottomMargin, .flexibleRightMargin]
             button.frame.origin.x = marginLeft
-            button.frame.origin.y = (defaultInsets.top + defaultInsets.bottom)/2
+            button.frame.origin.y = UIScreen.main.bounds.height/2
             
         }
     }
