@@ -663,6 +663,8 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             self?.headerView?.alpha = targetAlpha
             self?.footerView?.alpha = targetAlpha
             self?.closeButton?.alpha = targetAlpha
+            self?.previoursButton?.alpha = targetAlpha
+            self?.nextButton?.alpha = targetAlpha
             self?.thumbnailsButton?.alpha = targetAlpha
             self?.deleteButton?.alpha = targetAlpha
 
