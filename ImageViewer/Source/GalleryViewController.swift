@@ -49,8 +49,8 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
     fileprivate var footerLayout = FooterLayout.center(25)
     fileprivate var closeLayout = ButtonLayout.pinRight(8, 16)
     
-    fileprivate var nextLayout = ButtonLayout.pinRightCenter(2)
-    fileprivate var previoursLayout = ButtonLayout.pinLeftCenter(2)
+    fileprivate var nextLayout = ButtonLayout.pinRightCenter(0)
+    fileprivate var previoursLayout = ButtonLayout.pinLeftCenter(0)
 
     fileprivate var seeAllCloseLayout = ButtonLayout.pinRight(8, 16)
     fileprivate var thumbnailsLayout = ButtonLayout.pinLeft(8, 16)
@@ -226,7 +226,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         if let closeButton = closeButton {
             closeButton.addTarget(self, action: #selector(GalleryViewController.closeInteractively), for: .touchUpInside)
             closeButton.alpha = 0
-            self.view.addSubview(closeButton)
+//            self.view.addSubview(closeButton)
         }
         
         configureNextButton()
