@@ -255,7 +255,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
         if let thumbnailsButton = thumbnailsButton {
             thumbnailsButton.addTarget(self, action: #selector(GalleryViewController.showThumbnails), for: .touchUpInside)
             thumbnailsButton.alpha = 0
-            self.view.addSubview(thumbnailsButton)
+//            self.view.addSubview(thumbnailsButton)
         }
     }
 
