@@ -237,6 +237,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
 
         if let nextButton = nextButton {
             nextButton.addTarget(self, action: #selector(GalleryViewController.nextImg), for: .touchUpInside)
+            nextButton.alpha = 0
             self.view.addSubview(nextButton)
         }
     }
@@ -245,6 +246,7 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
 
         if let previoursButton = previoursButton {
             previoursButton.addTarget(self, action: #selector(GalleryViewController.previoursImg), for: .touchUpInside)
+            previoursButton.alpha = 0
             self.view.addSubview(previoursButton)
         }
     }
@@ -746,6 +748,8 @@ open class GalleryViewController: UIPageViewController, ItemControllerDelegate {
             closeButton?.alpha = alpha
             thumbnailsButton?.alpha = alpha
             deleteButton?.alpha = alpha
+            previoursButton?.alpha = alpha
+            nextButton?.alpha = alpha
             headerView?.alpha = alpha
             footerView?.alpha = alpha
 
